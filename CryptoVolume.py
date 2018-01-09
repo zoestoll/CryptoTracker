@@ -17,7 +17,7 @@ args = parser.parse_args()
 client = Client(args.apiKey, args.apiSecret)
 tickers = client.get_all_tickers()
 endTime = int(time.time() * 1000)
-startTime = int(time.mktime((datetime.today() - timedelta(days=1)).timetuple()))*1000
+startTime = int(time.mktime((datetime.today() - timedelta(minutes=30)).timetuple()))*1000
 
 for ticker in tickers:
 	
@@ -48,6 +48,6 @@ for ticker in tickers:
 
 	# Show results
 	for item in diffList:
-		if item[1] > 0 and item[1] > 5:
+		if item[1] > 5:
 				print  symbol[0:len(symbol)-3], '[{0}] {1}%'.format('#'*int(item[1]), int(item[1]))
 
